@@ -1,0 +1,13 @@
+
+img {
+	opacity: 0.5;
+	transition: all 500ms;
+	-moz-transition: all 500ms; /* Firefox 4 */
+	-webkit-transition: all 500ms; /* Safari and Chrome */
+	-o-transition: all 500ms; /* Opera */
+}
+
+.selected {
+	border: 1px solid green;
+	opacity: 1;
+}
