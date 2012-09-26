@@ -26,9 +26,12 @@ Comment réutiliser son code
 ------------------
 * Pourquoi les librairies JS ont dû étendre le code de base ? (modification de l'objet prototype ou string)
 * Comment faire un module jquery (application des bonnes pratiques vu avant)
+* Utilisation de require.js
 
 Comment tester son code ? 
 ------------------
+
+
 
 JS coté serveur ? 
 ----------------
