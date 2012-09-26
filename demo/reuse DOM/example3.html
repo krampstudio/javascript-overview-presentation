@@ -2,34 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Example 2</title>
+    <title>Example 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script src="js/jquery.json-2.3.js"></script>
   </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
 <div class="container">
 	<div class="hero-unit">
-		<h1>Example 2</h1>
+		<h1>Example 3</h1>
 		<p>Reuse the dom</p>
 		<div class="pagination">
 		  <ul>
 			<li><a href="example1.html">Example 1</a></li>
-			<li class="active"><a href="example2.html" class=>Example 2</a></li>
-			<li><a href="example3.html">Example 3</a></li>
+			<li><a href="example2.html" class=>Example 2</a></li>
+			<li class="active"><a href="example3.html">Example 3</a></li>
 		  </ul>
 		</div>
+
 	</div>
 </div>
   
     <div class="container">
 	
 		<div class="row">	
-			<div class="span6">
+			<div class="span12">
+			
+				<p><button class="btn btn-large btn-primary" type="button" id="getSelectBtn">Get selected</button></p>
+				<div id="resultSelected">
+				</div>
 				<p>
 					<img src="http://lorempixel.com/100/100/nature/1" class="img-polaroid" alt="">
 					<img src="http://lorempixel.com/100/100/nature/2" class="img-polaroid" alt="">
@@ -47,11 +53,19 @@
 
 					</p>
 			</div>
-			<div class="span6">
+			<div class="span12">
 		<h2>JS code</h2>
 				<pre>
 $("img").click(function() {
-	$(this).toggleClass("selected");
+			$(this).toggleClass("selected");
+		});
+		
+$("#getSelectBtn").click(function() {
+	$("#resultSelected").empty();
+		var srcList = $("img.selected").map(function(i,that) {
+			return that.src
+		}).get();
+		$("#resultSelected").append(srcList.join(", "));
 });
 	</pre>
 			<h2>HTML code</h2>
@@ -86,6 +100,14 @@ img {
 		<script>
 			$("img").click(function() {
 				$(this).toggleClass("selected");
+			});
+			
+			$("#getSelectBtn").click(function() {
+				$("#resultSelected").empty();
+				var srcList = $("img.selected").map(function(i,that) {
+					return that.src
+				}).get();
+				$("#resultSelected").append(srcList.join(", "));
 			});
 		</script>
 	
