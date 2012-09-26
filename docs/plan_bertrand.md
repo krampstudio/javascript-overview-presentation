@@ -23,16 +23,17 @@ Plan
       * Les spécificités (prototype, scope, closures, etc.)
       * JSON
  3. contre les idées reçues
-    * Langague extensible (exemple de framework)
-    * Rapiditié
-    * etc.
+    * Language fonctionnel
+    * Language extensible (exemple de framework)
+    * Rapiditié (V8, Maths, etc.)
+    * **Exemple de memorization de fonction rapide**
 3. Solutions _(Bertrand)_
     1. Cacher Javascript (GWT, DART, Coffescript, les lib serveur orientés composants - JSF, etc.)
     2. **Diving into Javascript!**                                                                  
 4. Utiliser un framework pour faire de la bonne tambouille _(Jérôme)_
     * Présentation rapide de qq framework clients
     * jQuery
-    * **Exemple d'utilisation (REuse the DOM)**
+    * **Exemple d'utilisation (REuse the DOM)** (nous allons garder ce même example tout au long de la pres)
 5. Organiser son code
     * **Pluginifier l'exemple précédent** _(Bertrand)_
     * **Structuration et chargement à la volée avec require.js** _(Bertrand)_
@@ -53,8 +54,8 @@ Plan
       * nommer les functions anonymes
       * opérateur de vérité
     2. Utiliser les événements
-    3.Utiliser les callbacks pour l'asynchrone
-    4.Réfléchir en JS et non en OOP traditionnel
+    3. Utiliser les callbacks pour l'asynchrone
+    4. Réfléchir en JS et non en OOP traditionnel
 9. Javascript everywhere  _(Bertrand+Jérôme)_
     * des tonnes de libs (cf. mindmap)
     * js côté serveur avec Node.js
