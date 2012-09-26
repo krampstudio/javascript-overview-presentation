@@ -9,7 +9,11 @@
     <link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script src="js/jquery.json-2.3.js"></script>
+	
+	
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css">
+	
+	
   </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -34,8 +38,7 @@
 			<div class="span12">
 			
 				<p><button class="btn btn-large btn-primary" type="button" id="getSelectBtn">Get selected</button></p>
-				<div id="resultSelected">
-				</div>
+				<pre id="resultSelected"></pre>
 				<p>
 					<img src="http://lorempixel.com/100/100/nature/1" class="img-polaroid" alt="">
 					<img src="http://lorempixel.com/100/100/nature/2" class="img-polaroid" alt="">
@@ -55,21 +58,21 @@
 			</div>
 			<div class="span12">
 		<h2>JS code</h2>
-				<pre>
+				<pre class="prettyprint linenums lang-Javascript">
 $("img").click(function() {
 			$(this).toggleClass("selected");
 		});
 		
 $("#getSelectBtn").click(function() {
 	$("#resultSelected").empty();
-		var srcList = $("img.selected").map(function(i,that) {
-			return that.src
-		}).get();
-		$("#resultSelected").append(srcList.join(", "));
+	var srcList = $("img.selected").map(function(i,that) {
+		return that.src
+	}).get();
+	$("#resultSelected").append(srcList.join(", "));
 });
 	</pre>
 			<h2>HTML code</h2>
-				<pre>
+				<pre class="prettyprint linenums">
 &lt;img src="http://lorempixel.com/100/100" alt=""&gt;
 &lt;img src="http://lorempixel.com/100/100" alt=""&gt;
 		.
@@ -79,7 +82,7 @@ $("#getSelectBtn").click(function() {
 &lt;img src="http://lorempixel.com/100/100" alt=""&gt;
 				</pre>
 			<h2>CSS code</h2>
-				<pre>
+				<pre class="prettyprint linenums">
 img {
 	opacity: 0.5;
 	transition: all 500ms;
@@ -92,8 +95,6 @@ img {
 	border: 1px solid green;
 	opacity: 1;
 }
-				
-				
 			</pre>
 			</div>
 		</div>
@@ -109,7 +110,11 @@ img {
 				}).get();
 				$("#resultSelected").append(srcList.join(", "));
 			});
+			
 		</script>
-	
+		<script src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
+		<script>
+			prettyPrint()
+		</script>
 	</div>
 </body>
