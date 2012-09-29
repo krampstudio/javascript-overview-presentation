@@ -244,8 +244,34 @@
 						<h2>Historique</h2>
 					</section>
 				</section>
-			</div>
-
+			
+			<!-- Part IV -->
+				<section>
+					<section>
+						<h1>IV Utiliser un framework pour faire de la bonne tambouille</h1>
+						
+					</section>
+					<section>
+						<h2>Quelques frameworks ?</h2>
+						<ul>
+							<li>Prototypes.js + scriptaculo.us</li>
+							<li>YUI</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Un petit exemple rapide avec jQuery</h2>
+						<pre>
+$('form').submit(function() {
+	$.post('ajax/test.html?'+$(this).serialize(), function(data) {
+		$('.result').html(data);
+	});
+	return false;
+});
+</pre>
+					</section>
+				</section>
+				
+			</div>	
 
 			<!-- The navigational controls UI -->
 			<aside class="controls">
