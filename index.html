@@ -264,9 +264,12 @@
 					<section>
 						<h3>JavaScript Object Notation</h3>
 						<img src="imgs/json.png" />
+	                                        <pre><code contenteditable>
+var a = {};	// == var a = new Object(); 
+						</code></pre>
 						<pre><code contenteditable>
 var myObject = {
-	foo : true,
+	foo : true,		// != myObject.prototype.foo
 	bar : 'baz',
 	'case' : 1,
 	init : function(param){
@@ -277,9 +280,89 @@ var myObject = {
 					</section>
 					<section>
 						<h3>Prototype</h3>
+						<ul>
+							<li>Modèle objet sans classes!</li>
+							<li>Chaque objet a un prototype</li>
+							<li>Les membres du prototypes sont propres à l'instance <spab class="inline-code">hasOwnProperty()</span></li>
+							<li>Le prototype est mutable</li>
+							<li>L'héritage se fait via une chaine de prototype uniquement</li>
+							<li>Plus souple que les classes</li>
+							<li>Un prototype peut être vu comme un exemplaire modèle d'une famille d'objet</li>
+						</ul>
+					</section>
+					<section>
+						<h4>A simple object</h4>
+						<pre><code contenteditable>
+//constructor
+var Person = function(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+//add a method to the prototype 
+Person.prototype.toString = function() { return this.firstName + ' ' + this.lastName; }
+
+
+						</code></pre>
+					</section>
+					<section>
+						<h4>Prototype Chain - Inheritance</h4>
+						<pre><code contenteditable>
+var Person = {};
+var Developer = function() {
+	var F = function () {};	//create a fake object
+	F.prototype = Person;	//assign Person's prototype to it
+        return new F();		//return an instance of fake
+};
+
+Person.name = 'Resig';
+Person.firstname = 'John';
+
+var jr = new Developer();	
+console.log(jr.name);		//Resig		
+						</code></pre>
+					</section>
+					<section>
+						<h4>Object.create since EcmaScript 5</h4>
+                                                <pre><code contenteditable>
+var a = {a: 1};
+// a ---&gt; Object.prototype ---&gt; null
+ 
+var b = Object.create(a);
+// b ---&gt; a ---&gt; Object.prototype ---&gt; null
+console.log(b.a); // 1 (inherited)
+ 
+var c = Object.create(b);
+// c ---&gt; b ---&gt; a ---&gt; Object.prototype ---&gt; null
+ 
+var d = Object.create(null);
+// d ---&gt; null
+console.log(d.hasOwnProperty); // undefined, because d doesn't inherit from Object.prototype
+						</code></pre>
 					</section>
 					<section>
 						<h2>Scope</h2>
+						<pre><code contenteditable>
+function test(){
+	a = 12;		//global
+};
+var a = -1;
+test();
+console.log(a); //12
+						</code></pre>
+					</section>
+					<section>
+                                                <h2>Scope</h2>
+                                                <pre><code contenteditable>
+function  test(){
+	var a = 32;		//without var, hoising wont work
+	function subTest(){
+		a+= 1;		//hoising
+	}
+	subTest();
+	console.log(a);	//33
+}						
+						</code></pre>
 					</section>
 					<section>
 						<h2>Closures</h2>
