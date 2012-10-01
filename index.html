@@ -384,14 +384,23 @@ var myObject = {
 					
 					<section>
 						<h2>Rapidement</h2>
+						<p>Selecteur CSS</p>
 <pre><code contenteditable class="javascript">						
+$('.toto'); //selectionne tout les elements HTML ayant comme class "toto"
+</code></pre>
+						<p class="fragment">Utilisation</p>
+<pre class="fragment"><code contenteditable class="javascript">						
 $('.comment p').addClass("cursive");
 </code></pre>
-<pre><code contenteditable class="javascript">						
+<pre class="fragment"><code contenteditable class="javascript">						
 $('.comment').click(function() {
 	$(this).hide();
 });
 </code></pre>	
+<pre class="fragment"><code contenteditable class="javascript">						
+$('div').children().append("&lt;li&gt;New list element&lt;/li&gt;");
+</code></pre>	
+
 						<p class="fragment">Plus compliqué ?</p>
 					</section>				
 					
