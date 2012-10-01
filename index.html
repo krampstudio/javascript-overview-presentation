@@ -494,10 +494,85 @@ $('form').submit(function() {
   &lt;/body&gt;
 &lt;/html&gt;					
 </code></pre>
-					</section>
-				</section>
+			</section>
+		</section>
+		<!-- Part VII -->
+		<section>
+			<section>
+				<h1>VIII. Bonnes pratiques</h1>
 				
-			</div>	
+			</section>
+			<section>
+				<h3>Use strict</h3>
+				<pre>
+<code contenteditable class="javascript">						
+"use strict";
+
+mistypedVaraible = 17; // throws a ReferenceError
+
+var o = { p: 1, p: 2 }; // !!! syntax error
+
+</code></pre>
+				<ul>
+					<li>Le mode strict change la syntaxe et le runtime JS</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Pas de variables globales</h3>
+				<ul>
+					<li>Limiter la visibilité des variables en les incluants dans des scopes ou dans des objets globales</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Nommer les fonctions anonymes</h3>
+				<pre><code contenteditable class="javascript">						
+var anonFunc = function anonFunc() {};
+
+</code></pre>
+				<ul>
+					<li>Nommer les fonctions anonymes permet de tracer 	l'éxecution en cas d'erreur</li>
+				</ul>
+			</section>
+			
+			<section>
+				<h3>Le JS n'est pas un langage OOP</h3>
+				
+				<ul>
+					<li>Utiliser le prototypage</li>
+					<li>N'hésitez pas à faire de la programmation fonctionnel</li>
+				</ul>
+				<pre class="fragment"><code contenteditable class="javascript">						
+function forEach(array, action) {
+  for (var i = 0; i < array.length; i++)
+    action(array[i]);
+}
+
+forEach(["Wampeter", "Foma", "Granfalloon"], print);
+</code></pre>
+	<pre class="fragment"><code contenteditable class="javascript">						
+function sum(numbers) {
+  var total = 0;
+  forEach(numbers, function (number) {
+    total += number;
+  });
+  return total;
+}
+show(sum([1, 10, 100]));
+</code></pre>
+			</section>
+		
+			<!--Synatxe (cf. JSLint)
+gestion des erreurs
+
+opérateur de vérité
+Utiliser les événements
+Utiliser les callbacks pour l'asynchrone
+Réfléchir en JS et non en OOP traditionnel-->
+		
+		
+		</section>
+			
+		</div>	
 
 			<!-- The navigational controls UI -->
 			<aside class="controls">
