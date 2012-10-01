@@ -243,12 +243,114 @@
 					<section>
 						<h2>Historique</h2>
 					</section>
+					<section data-markdown>
+						<h2>Modèle objet</h2>
+						<ul>
+							<li>Tout est objet sauf <i>null</i> et undefined</li>
+							<li>Les nombres sont aussi des objets mais attention:
+									<pre><code contenteditable>
+2.toString();	//raises SyntaxError
+									</code></pre>
+									<pre class="fragment"><code contenteditable>
+ 2..toString();
+(2).toString();
+ 2 .toString();
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>JavaScript Object Notation</h3>
+						<img src="imgs/json.png" />
+						<pre><code contenteditable>
+var myObject = {
+	foo : true,
+	bar : 'baz',
+	'case' : 1,
+	init : function(param){
+		return param || null;
+	}
+};
+						</code></pre>
+					</section>
+					<section>
+						<h3>Prototype</h3>
+					</section>
+					<section>
+						<h2>Scope</h2>
+					</section>
+					<section>
+						<h2>Closures</h2>
+					</section>
+				</section>
+				
+			<!-- Part III -->
+				<section>
+					<section>
+						<h1>III. Que faire ?</h1>
+					</section>
+					<section>
+						<h3>Invisible JS!</h3>
+						<ul>
+							<li class="fragment">Coder en Java, compiler vers Javascript
+								<div class="fragment">
+									<img src="imgs/hide-js/gwt.png" /> 
+									<img src="imgs/hide-js/vaadin.png" />
+								</div>
+							</li>
+							<li class="fragment">Utiliser un framework de composants / templates
+								<div class="fragment">
+									<img src="imgs/hide-js/myfaces.png" />
+									<img src="imgs/hide-js/richfaces.png" />
+									<img src="imgs/hide-js/zk.png" />
+								</div>
+							</li>
+							<li class="fragment">Utiliser une surcouche, un autre langage
+								<div class="fragment">
+									<img src="imgs/hide-js/coffeescript.png" />
+									<img src="imgs/hide-js/dart.png" />
+								</div>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Dive into JavaScript!</h3>
+						<pre class="fragment"><code contenteditable>
+(function(){
+	'use strict';
+
+	var developer = {
+		skills : [
+			{language : 'Java', 	level : 'guru'},
+			{language : 'SQL', 	level : 'expert'},
+			{language : 'XML', 	level : 'expert'},
+			{language : 'C', 	level : 'padawan'},
+			{language : 'Bash', 	level : 'padawan'}
+		]
+	};
+	
+	developer.bind('after.javascript-overview', function updateMind(){
+		
+		this.skills.push({
+			language 	: 'javascript',
+			level		: 'guru'
+		});
+		
+	});
+	
+})();
+						</code></pre>
+					</section>
+					<section>
+						<h3>We need you!</h3>
+						<img src="imgs/we_need_you.jpg" />
+					</section>
 				</section>
 			
 			<!-- Part IV -->
 				<section>
 					<section>
-						<h1>IV Utiliser un framework pour faire de la bonne tambouille</h1>
+						<h1>IV. Utiliser un framework pour faire de la bonne tambouille</h1>
 						
 					</section>
 					<section>
@@ -260,14 +362,14 @@
 					</section>
 					<section>
 						<h2>Un petit exemple rapide avec jQuery</h2>
-						<pre>
+							<pre><code contenteditable>
 $('form').submit(function() {
 	$.post('ajax/test.html?'+$(this).serialize(), function(data) {
 		$('.result').html(data);
 	});
 	return false;
 });
-</pre>
+						</code></pre>
 					</section>
 				</section>
 				
