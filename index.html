@@ -56,7 +56,8 @@
 					</section>
 					<section>
 					<h2>Quelques exemples de bon code JS</h2>
-						<pre> 
+<pre>
+<code contenteditable class="javascript">
 						
      function hello(what) {
          what = "world";
@@ -64,20 +65,21 @@
      }
     > hello("shazow")
     "Hello, world!"
-	</pre>
-	
+	</code>
+</pre>
 	<pre>
-	
+<code contenteditable class="javascript">	
  0 === -0        //true
  1/0 === 1/-0    //false
- 
+</code>
 </pre>
-
 <pre>
+<code contenteditable class="javascript">
 
 9999999999999999
 //=> 10000000000000000
 
+</code>
 </pre>
 					</section>
 					<section>
@@ -252,22 +254,93 @@
 						
 					</section>
 					<section>
-						<h2>Quelques frameworks ?</h2>
+						<h2>Pourquoi utiliser un framework js ?</h2>
+						<p>Le JavaScript
+						<ul>
+							<li>n'est pas complet</li>
+							<li>n'encourage pas aux bonnes pratiques</li>
+							<li>ne donne pas un cadre pour faciliter le développement propre</li>
+						</ul>
+						<div>
+							<blockquote class="fragment">Et aussi éviter les fuites mémoires</blockquote>
+						</div>
+					</section>
+					<section>
+						<h2>Quelques (vieux) frameworks ?</h2>
 						<ul>
 							<li>Prototypes.js + scriptaculo.us</li>
 							<li>YUI</li>
+							<li>Dojo</li>
+							<li>MooTools</li>
 						</ul>
 					</section>
 					<section>
-						<h2>Un petit exemple rapide avec jQuery</h2>
+						<h2>L'incoutournable</h2>
+						<img src="http://upload.wikimedia.org/wikipedia/fr/b/b3/Jquery-logo.png"/>
+						<p><b>jQuery</b> is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.</p>
+					</section>
+					
+					<section>
+						<h2>Rapidement</h2>
 						<pre>
+<code contenteditable class="javascript">						
+$('.comment p').addClass("cursive");
+</code></pre>
+<pre>
+<code contenteditable class="javascript">						
+$('.comment').click(function() {
+	$(this).hide();
+});
+</code></pre>	
+						<p class="fragment">Plus compliqué ?</p>
+					</section>				
+					
+					<section data-state="alert">
+						<h2>Un peu plus compliqué</h2>
+						<pre>
+<code contenteditable class="javascript">						
 $('form').submit(function() {
 	$.post('ajax/test.html?'+$(this).serialize(), function(data) {
 		$('.result').html(data);
 	});
 	return false;
 });
-</pre>
+</code></pre>
+					</section>
+					<section>
+						<h2>Super heroic !</h2>
+						<img src="http://angularjs.org/img/AngularJS-large.png"/>
+						<p>HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop.</p>
+					</section>
+					<section>
+					
+					<pre>
+<code contenteditable class="javascript">	
+&lt;!doctype html&gt;
+&lt;html ng-app="components"&gt;
+  &lt;head&gt;
+    &lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="components.js"&gt;&lt;/script&gt;
+    &lt;script src="beers.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;tabs&gt;
+      &lt;pane title="Localization"&gt;
+        Date: {{ '2012-04-01' | date:'fullDate' }} &lt;br&gt;
+        Currency: {{ 123456 | currency }} &lt;br&gt;
+        Number: {{ 98765.4321 | number }} &lt;br&gt;
+      &lt;/pane&gt;
+      &lt;pane title="Pluralization"&gt;
+        &lt;div ng-controller="BeerCounter"&gt;
+          &lt;div ng-repeat="beerCount in beers"&gt;
+            &lt;ng-pluralize count="beerCount" when="beerForms"&gt;&lt;/ng-pluralize&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/pane&gt;
+    &lt;/tabs&gt;
+  &lt;/body&gt;
+&lt;/html&gt;					
+</code></pre>
 					</section>
 				</section>
 				
