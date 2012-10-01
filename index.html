@@ -43,6 +43,15 @@
 					<h1>Javascript aux petits oignions</h1>
 					<img src="imgs/js-logo.png" height="200" width="200">
 				</section>
+				<section>
+					<h1>Lexique</h1>
+					<table>
+						<tr>
+							<td>DOM</td><td>presents an HTML document as a tree-structure.</td>
+							<td>CSS</td><td>Cascading Stylesheet</td>
+						</td>
+					</table>
+				</section>
 				<!-- Part I -->
 				<section>
 					<section>
@@ -357,14 +366,21 @@ var myObject = {
 					</section>
 					<section>
 						<h2>Pourquoi utiliser un framework js ?</h2>
-						<p>Le JavaScript
+						<p>Le JavaScript est langage qui...</p>
 						<ul>
-							<li>n'est pas complet</li>
-							<li>n'encourage pas aux bonnes pratiques</li>
-							<li>ne donne pas un cadre pour faciliter le développement propre</li>
+							<li class="fragment">n'est pas complet</li>
+							<li class="fragment">n'encourage pas aux bonnes pratiques</li>
+							<li class="fragment">ne donne pas un cadre pour faciliter le développement propre</li>
 						</ul>
+						
+					</section>
+					<section>
+						<h2>Pourquoi utiliser un framework js ?</h2>
+						<p>Un framework JS fournit</p>
+						<h3 class="fragment">
+							un cadre pour le développement</h3>
 						<div>
-							<blockquote class="fragment">Et aussi éviter les fuites mémoires</blockquote>
+							<blockquote class="fragment">Et aussi un moyen d'éviter les fuites mémoires</blockquote>
 						</div>
 					</section>
 					<section>
@@ -417,14 +433,42 @@ $('form').submit(function() {
 </code></pre>
 					</section>
 					<section>
+						<h3>jQuery in action</h3>
+						<p>Essayons de faire ensemble une interface de selection d'images</p>
+						<ul>
+							<li class="fragment">En moins de 10 lignes de codes JS</li>
+							<li class="fragment">Flexible</li>
+							<li class="fragment">Reutilisable</li>
+						</ul>
+						<div>
+						<a  class="fragment" href="demo/reuseDOM/example1.html" target="demo">Commençons</a>
+						</div>
+					</section>
+					<section>
+						<h3>Conclusion de ce petit exemple</h3>
+						<ul>
+							<li>HTML peut être considéré comme un modèle de donnée</li>
+							<li>Seul la feuille de style CSS doit gérer la présentation</li>
+							<li>Le JS peut être considéré comme un controlleur</li>
+						</ul>
+					</section>
+					<section>
 						<h2>Super heroic !</h2>
 						<img src="http://angularjs.org/img/AngularJS-large.png"/>
 						<p>HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop.</p>
 					</section>
 					<section>
+						<h2>AngularJS: create your own HTML tags</h2>
+						
+						<p>AngularJS permet de créer son propre langage de modélisation en étendant la syntaxe HTML pour rencontrer vos besoins.</p>
+
+						<p>AngularJS respecte de près les règles du MVC (modèle, vue, contrôleur). Il y a de fait une synchronisation entre les données de 
+						l'interface utilisateur et les objets JavaScript.</p>
+					</section>
+					<section>
 					
 					<pre>
-<code contenteditable class="javascript">	
+<code contenteditable class="html">	
 &lt;!doctype html&gt;
 &lt;html ng-app="components"&gt;
   &lt;head&gt;
