@@ -199,10 +199,10 @@
 				</section>
 				<section>
 					<section>
-						<h1>Retour sur le langage</h1>
+						<h2>Retour sur le langage</h2>
 					</section>
 					<section>	
-						<h2>Il faut tout de même le dire:</h2>
+						<h3>Il faut tout de même le dire:</h3>
 						<img src="imgs/javajavascript.png" alt="java+script" />
 					</section>
 					<section>
@@ -246,6 +246,11 @@
 									<td>JVM</td>
 								</tr>
 								<tr>
+									<td>Nashorn</td>
+									<td>-</td>
+									<td>JVM</td>
+								</tr>
+								<tr>
 									<td>Chakra</td>
 									<td>IE9</td>
 									<td>MSHTML.dll ?</td>
@@ -254,10 +259,10 @@
 						</table>
 					</section>
 					<section>
-						<h2>Historique</h2>
+						<h3>Historique</h3>
 					</section>
 					<section>
-						<h2>Modèle objet</h2>
+						<h3>Modèle objet</h3>
 						<ul>
 							<li>Tout est objet sauf <i>null</i> et undefined</li>
 							<li>Les nombres sont aussi des objets mais attention:
@@ -308,10 +313,12 @@ var myObject = {
 var Person = function(firstName, lastName) {
   this.firstName = firstName;
   this.lastName = lastName;
-}
+};
 
 //add a method to the prototype 
-Person.prototype.toString = function() { return this.firstName + ' ' + this.lastName; }
+Person.prototype.toString = function() { 
+ this.firstName + ' ' + this.lastName; 
+};
 
 
 						</code></pre>
@@ -377,6 +384,67 @@ function  test(){
 					</section>
 					<section>
 						<h2>Closures</h2>
+						<pre><code contenteditable>
+function callLater(elt, style){
+    return (function(){
+        if(elt && (typeof style == 'object')){
+			elt.css(style);
+		}
+    });
+}
+var functRef = callLater($('div'), 'display", 'none');
+setTimeout(functRef, 500);
+						</code></pre>
+					</section>
+					<section>
+						<h3>Contre les idées reçcues</h3>
+						<ul>
+							<li>Language fonctionnel</li>
+							<li>Modèle objet puissant car extensible</li>
+							<li>Rapide</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Un framework minute!</h3>
+						<pre><code contenteditable>
+(function(){	//no globals
+var LogicaScript = {
+	__elts : [],
+	id : function(id){
+		if(typeof id == 'string'){
+			var elt = document.getElementById(id);
+			if(elt){ this.__elts.push(elt); }
+		}
+		return this; 	//chaining
+	},
+	style : function(css){
+		if(typeof id == 'object'){
+			for(elt in this.__elts){ elt.style = css; }
+		}
+		return this; 	//chaining
+	}
+	get : function(index){ return this.__elts[index || 0]; }
+};
+if(!window.__) window.__ = LogicaScript; //available from the browser context
+})();
+//...
+var hiddenElt = __('my-id').style({'display': 'none'}).get();
+						</code></pre>
+					</section>
+					<section>
+						<h3>Javascript vs Java</h3>
+						<img src="imgs/js_java_bench.jpg" />
+						<div>
+							<small><a href="http://shootout.alioth.debian.org/u32/javascript.php">shootout.alioth.debian.org</a></small>
+						</div>
+					</section>
+					<section>
+						<h3>JS vs Java Math: rendering of a Mandelbulb</h3>
+						<img src="imgs/quintic_mandelbulb.jpg" />
+						<img src="imgs/math_java_js_mandelbulb.png" />
+						<div>
+							<small><a href="http://www.redcode.nl/blog/2012/07/java-speed-of-math">http://www.redcode.nl/blog/2012/07/java-speed-of-math</a></small>
+						</div>
 					</section>
 				</section>
 				
