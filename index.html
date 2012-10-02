@@ -829,14 +829,75 @@ function sum(numbers) {
 show(sum([1, 10, 100]));
 </code></pre>
 			</section>
-		
+			<section>
+				<h3>Un code asynchrone</h3>
+				<p>L'interface ne doit JAMAIS être bloqué par un traitement JS</p>
+				<ul>
+					<li>Utiliser les méthodes de callback des framework</li>
+					<li>Utiliser les web workers</li>
+					<li>Deferred et Promise (jQuery)</li>
+				</ul>
+					<pre class="fragment"><code contenteditable class="javascript">						
+function func1(data, textStatus, jqXHR) {
+    console.log('success', data);
+}
+
+function func2(jqXHR, textStatus) {
+    console.log('done', textStatus);
+}
+
+$.post('/url/', someData).success(func1).done(func2);
+</code></pre>
+			</section>
+			<section>
+				<h3>Gestion des erreurs</h3>
+				<pre class="fragment"><code contenteditable class="javascript">						
+try {
+	// some function/code that can throw
+	if (isNaN(value))
+		throw new NotNumberException;
+	else
+	if (value < 0)
+			throw new NotPositiveNumberException;
+}
+catch (e if e instanceof NotNumberException) {
+	alert("not a number");
+}
+catch (e if e instanceof NotPositiveNumberException) {
+	alert("not a positive number");
+}
+	
+</code></pre>
+			</section>
+			<section>
+				<h3>Respecter la syntaxe</h3>
+				<ul>
+					<li>La JavaScript étant très laxiste sur la syntaxe il est important d'utiliser et respecter des conventions</li>
+					<li>Utiliser des outils comme JSLint ou Closure Linter</li>
+				</ul>
+				<pre class="fragment"><code contenteditable class="bash">	
+&gt; gjslint --strict fixme.js
+				
+Line 1, E:0010: (New error) Missing semicolon at end of line
+Line 2, E:0002: Missing space before "="
+Line 2, E:0002: Missing space after "="
+Line 4, E:0002: Missing space before "("
+Line 4, E:0002: Missing space after ";" in for statement
+Line 4, E:0001: Extra space before ")"
+Line 6, E:0006: (New error) Wrong indentation: expected any of {2} but got 3
+Line 9, E:0121: Illegal comma at end of array literal
+Line 12, E:0120: Binary operator should go on previous line "+"
+Found 9 errors, including 2 new errors, in 1 files (0 files OK).
+</code></pre>
+<pre class="fragment"><code contenteditable class="bash">	
+&gt; fixjsstyle --strict fixme.js
+</code></pre>
+			</section>
 			<!--Synatxe (cf. JSLint)
-gestion des erreurs
 
 opérateur de vérité
 Utiliser les événements
-Utiliser les callbacks pour l'asynchrone
-Réfléchir en JS et non en OOP traditionnel-->
+-->
 		
 		
 		</section>
