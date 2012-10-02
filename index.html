@@ -48,6 +48,8 @@
 					<table>
 						<tr>
 							<td>DOM</td><td>presents an HTML document as a tree-structure.</td>
+						</tr>
+						<tr>
 							<td>CSS</td><td>Cascading Stylesheet</td>
 						</td>
 					</table>
@@ -577,6 +579,122 @@ $('form').submit(function() {
   &lt;/body&gt;
 &lt;/html&gt;					
 </code></pre>
+			</section>
+		</section>
+		
+		<!-- Part V -->
+		<section>
+			<section>
+				<h1>V. Organiser son code</h1>
+			</section>
+			<!-- ... -->
+			<section>
+				<h3>Simplifions le CSS avec LESS</h3>
+				<img src="http://cdn.churchm.ag/wp-content/uploads/2011/08/less-logo-180x180.png"/>
+				<p>LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.</p>
+			</section>
+			<section>
+				<h3>Un exemple simple avec LESS</h3>
+<pre>
+<code contenteditable class="CSS">						
+/* LESS */
+
+@color: #4D926F;
+
+#header {
+  color: @color;
+}
+h2 {
+  color: @color;
+}
+</code></pre>
+<pre class="fragment">
+<code contenteditable class="CSS">						
+/* Compiled CSS */
+
+#header {
+  color: #4D926F;
+}
+h2 {
+  color: #4D926F;
+}
+</code></pre>
+
+			</section>
+<section>
+				<h3>Un exemple simple avec LESS</h3>
+<pre>
+<code contenteditable class="CSS">						
+/* LESS */
+
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+#header {
+  .rounded-corners;
+}
+#footer {
+  .rounded-corners(10px);
+}
+</code></pre>
+<pre class="fragment">
+<code contenteditable class="CSS">						
+/* Compiled CSS */
+
+#header {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+#footer {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+</code></pre>
+
+			</section>
+			<section>
+				<h3>Un exemple un peu moins simple avec LESS</h3>
+<pre>
+<code contenteditable class="CSS">						
+@base: #f938ab;
+
+.box-shadow(@style, @c) when (iscolor(@c)) {
+  box-shadow:         @style @c;
+  -webkit-box-shadow: @style @c;
+  -moz-box-shadow:    @style @c;
+}
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
+.box { 
+  color: saturate(@base, 5%);
+  border-color: lighten(@base, 30%);
+  div { .box-shadow(0 0 5px, 30%) }
+}
+</code></pre>
+
+
+			</section>
+<section>
+				<h3>Comment l'utiliser ?</h3>
+				<h4>En developpement</h4>
+<pre>
+<code contenteditable class="HTML">						
+	&lt;link rel="stylesheet/less" type="text/css" href="styles.less"&gt;
+	&lt;script src="less.js" type="text/javascript"&gt;&lt;/script&gt;
+</code></pre>
+				<div class="fragment">
+					<h4>En production</h4>
+<pre>
+<code contenteditable class="bash">						
+	$ lessc styles.less &gt; styles.css
+</code></pre>
+				</div>
 			</section>
 		</section>
 		<!-- Part VII -->
