@@ -4,13 +4,15 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Javascript aux petits oignons</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="icon" type="image/x-icon" href="imgs/js.ico" />
 		
 		<link href='http://fonts.googleapis.com/css?family=Ranchers|McLaren' rel='stylesheet' type='text/css' />
 		
@@ -260,16 +262,17 @@
 					</section>
 					<section>
 						<h3>Historique</h3>
+							<iframe height='450' width='100%' src='http://timeglider.com/t/d5af1b40d8352b3d?min_zoom=37&max_zoom=46' allowfullscreen></iframe>
 					</section>
 					<section>
 						<h3>Modèle objet</h3>
 						<ul>
 							<li>Tout est objet sauf <i>null</i> et undefined</li>
 							<li>Les nombres sont aussi des objets mais attention:
-									<pre><code contenteditable>
+									<pre><code contenteditable class="javascript">>
 2.toString();	//raises SyntaxError
 									</code></pre>
-									<pre class="fragment"><code contenteditable>
+									<pre class="fragment"><code contenteditable class="javascript">>
  2..toString();
 (2).toString();
  2 .toString();
@@ -280,10 +283,10 @@
 					<section>
 						<h3>JavaScript Object Notation</h3>
 						<img src="imgs/json.png" />
-	                                        <pre><code contenteditable>
+	                                        <pre><code contenteditable class="javascript">>
 var a = {};	// == var a = new Object(); 
 						</code></pre>
-						<pre><code contenteditable>
+						<pre><code contenteditable class="javascript">>
 var myObject = {
 	foo : true,		// != myObject.prototype.foo
 	bar : 'baz',
@@ -308,7 +311,7 @@ var myObject = {
 					</section>
 					<section>
 						<h4>A simple object</h4>
-						<pre><code contenteditable>
+						<pre><code contenteditable class="javascript">>
 //constructor
 var Person = function(firstName, lastName) {
   this.firstName = firstName;
@@ -325,7 +328,7 @@ Person.prototype.toString = function() {
 					</section>
 					<section>
 						<h4>Prototype Chain - Inheritance</h4>
-						<pre><code contenteditable>
+						<pre><code contenteditable class="javascript">>
 var Person = {};
 var Developer = function() {
 	var F = function () {};	//create a fake object
@@ -342,7 +345,7 @@ console.log(jr.name);		//Resig
 					</section>
 					<section>
 						<h4>Object.create since EcmaScript 5</h4>
-                                                <pre><code contenteditable>
+                        <pre><code contenteditable class="javascript">>
 var a = {a: 1};
 // a ---&gt; Object.prototype ---&gt; null
  
@@ -359,8 +362,8 @@ console.log(d.hasOwnProperty); // undefined, because d doesn't inherit from Obje
 						</code></pre>
 					</section>
 					<section>
-						<h2>Scope</h2>
-						<pre><code contenteditable>
+						<h3>Scope</h3>
+						<pre><code contenteditable class="javascript">
 function test(){
 	a = 12;		//global
 };
@@ -370,8 +373,8 @@ console.log(a); //12
 						</code></pre>
 					</section>
 					<section>
-                                                <h2>Scope</h2>
-                                                <pre><code contenteditable>
+                        <h3>Scope</h3>
+                        <pre><code contenteditable class="javascript">
 function  test(){
 	var a = 32;		//without var, hoising wont work
 	function subTest(){
@@ -379,12 +382,13 @@ function  test(){
 	}
 	subTest();
 	console.log(a);	//33
-}						
+}					
 						</code></pre>
 					</section>
 					<section>
-						<h2>Closures</h2>
-						<pre><code contenteditable>
+						<h3>Closures</h3>
+						<pre><code contenteditable class="javascript">
+//test
 function callLater(elt, style){
     return (function(){
         if(elt && (typeof style == 'object')){
@@ -406,7 +410,7 @@ setTimeout(functRef, 500);
 					</section>
 					<section>
 						<h3>Un framework minute!</h3>
-						<pre><code contenteditable>
+						<pre><code contenteditable class="javascript">>
 (function(){	//no globals
 var LogicaScript = {
 	__elts : [],
