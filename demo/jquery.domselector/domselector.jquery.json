@@ -1,0 +1,21 @@
+{
+    "name"          : "domselector",
+    "title"         : "jQuery Dom Selector Plugin",
+    "description"   : "A jQuery plugin that enables you use dom elements for selection",
+    "version"       : "0.1.0",
+    "homepage"      : "https://github.com/krampstudio/javascript-overview-presentation/tree/master/demo/jquery.domselector",
+    "keywords"      : ["dom"],
+    "author": {
+        "name"  : "Bertrand Chevrier",
+        "email" : "chevrier.bertrand@gmail.com",
+        "url"   : "https://github.com/krampstudio/"
+    },
+    "licenses": [{
+        "type": "GPL",
+        "url" : "http://www.gnu.org/licenses/gpl-3.0.txt"
+    }],
+    "bugs"  : "https://github.com/krampstudio/javascript-overview-presentation/issues",
+    "dependencies": {
+        "jquery"   : ">=1.7"
+    }
+}
