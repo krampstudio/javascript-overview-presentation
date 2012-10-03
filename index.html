@@ -46,6 +46,16 @@
 					<img src="imgs/js-logo.png" height="200" width="200">
 				</section>
 				<section>
+					<h1>Avant propos</h1>
+					<h2>Pourquoi faire du JS de nos jours ? </h2>
+					<ul>
+						<li class="fragment">Des applications de plus en plus riche</li>
+						<li class="fragment">HTML5 + JS s'impose comme standard (abandon de Flash par Adobe)</li>
+						<li class="fragment">Compatible sur quasi toute les plateformes</li>
+						<li class="fragment">Aucune alternative pour le moment</li>
+					</ul>
+				</section>
+				<section>
 					<h1>Lexique</h1>
 					<table>
 						<tr>
@@ -457,12 +467,34 @@ var hiddenElt = __('my-id').style({'display': 'none'}).get();
 							le temps d'exécution d'une fonction en mémorisant ses résultats d'une fois sur l'autre.</p>
 					</section>
 
+
+					<section>
+						<h3>Memoization de fonction rapide</h3>
+						<p>Exemple de fonction de memoization</p>
+												<pre><code contenteditable class="javascript">
+function memo(f) {
+  var cache = {};
+  return function (arg) {
+      if(arg in cache) {
+		console.log("hit cache "+arg);
+		return cache[arg]
+	  }
+	  else {
+		console.log("cache miss "+arg);
+		return cache[arg] = f(arg); 
+	  }
+  }; 
+}
+						</code></pre>
+					</section>
+					
 					<section>
 						<h3>Memoization de fonction rapide</h3>
 						<p>Ajoutons au prototype de base des functions en JS une méthode de memoization</p>
 												<pre><code contenteditable class="javascript">
 Function.prototype.memoize = function(){  
-    var self = this, cache = {};  
+    var self = this;
+	var cache = {};  
     return function( arg ){  
       if(arg in cache) {  
         console.log('Cache hit for '+arg);  
@@ -486,10 +518,33 @@ function fib(n){
 						<div class="fragment">	
 							<p>En une ligne de code</p>
 							<pre><code contenteditable class="javascript">
-var memoizeFibo = fib.memoize();
-memoizeFibo(20);
+var fib = fib.memoize();
+fib(3);
 						</code></pre>
 						</div>
+					</section>
+					<section>
+						<div>	
+							<p>Resultat</p>
+							<pre><code contenteditable class="javascript">
+fib(3)
+Cache miss for 3
+Cache miss for 2
+Cache miss for 1
+Cache miss for 0
+Cache hit for 1
+3
+
+						</code></pre>
+						</div>	
+						<div class="fragment">
+							<pre><code contenteditable class="javascript">
+
+fib(3)
+Cache hit for 3
+3
+						</code></pre>
+						</div>						
 					</section> 
 				</section>
 				
@@ -648,6 +703,14 @@ $('form').submit(function() {
 							<li>HTML peut être considéré comme un modèle de donnée</li>
 							<li>Seul la feuille de style CSS doit gérer la présentation</li>
 							<li>Le JS peut être considéré comme un controlleur</li>
+						</ul>
+					</section>
+					<section>
+						<h3>jQuery ce n'est pas que cela !</h3>
+						<ul>
+							<li class="fragment">jQueryUI</li>
+							<li class="fragment">jQuery Mobile</li>
+							<li class="fragment">des centaines de plugin jQuery (jQuery cookie, GraphUp, jQuerypp...) </li>
 						</ul>
 					</section>
 					<section>
