@@ -700,7 +700,53 @@ $('form').submit(function() {
 			<section>
 				<h1>V. Organiser son code</h1>
 			</section>
-			<!-- ... -->
+			<section>
+				<h2>Adhérer à son Framework</h2>
+				<p><a href="demo/jquery.domselector/sample/example1.html" target="_blank">Exemple de création de plugin jQuery</a></p>
+			</section>
+			<section>
+				<h2>Inclusion et Import</h2>
+				<img src="imgs/desert.jpg" class="fragment" />
+			</section>
+			<section>
+				<h3>Module API</h3>
+				<img src="imgs/common-js.png" />
+				<pre><code contenteditable class="javascript">
+//example.js
+exports.hello = function() {
+  return 'Hello World'
+};
+				</code></pre>
+				<pre><code contenteditable class="javascript">
+//test.js				
+var example = require('./example.js');
+example.hello();
+				</code></pre>
+			</section>
+			<section>
+				<h3>Asynchronous Module Definition</h3>
+				<img src="imgs/amdjs.png" />
+				<pre><code contenteditable class="javascript">
+define(function (require) {
+	require(['a', 'b'], function (a, b) {
+	  //modules a and b are now available for use.
+	});
+});
+				</code></pre>
+			</section>
+			<section>
+				<h3>Require.js</h3>
+				<img src="imgs/require-js.png" />
+				<div style="margin:2em auto;">
+					<ul>
+						<li>Structuration du code</li>
+						<li>Définition de Web Modules</li>
+						<li>Client/Server</li>
+						<li>Implémente AMDjs et compatible CommonJs</li>
+					</ul>
+				</div>
+				<p><a href="demo/jquery.domselector/sample/example1.html" target="_blank">Exemple</a></p>
+			</section>
 			<section>
 				<h3>Simplifions le CSS avec LESS</h3>
 				<img src="http://cdn.churchm.ag/wp-content/uploads/2011/08/less-logo-180x180.png"/>
