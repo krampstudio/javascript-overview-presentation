@@ -450,6 +450,47 @@ var hiddenElt = __('my-id').style({'display': 'none'}).get();
 							<small><a href="http://www.redcode.nl/blog/2012/07/java-speed-of-math">http://www.redcode.nl/blog/2012/07/java-speed-of-math</a></small>
 						</div>
 					</section>
+					
+					<section>
+						<h3>Memoization de fonction rapide en JS</h3>
+						<p>En informatique, la mémoization est une technique d'optimisation de code consistant à réduire 
+							le temps d'exécution d'une fonction en mémorisant ses résultats d'une fois sur l'autre.</p>
+					</section>
+
+					<section>
+						<h3>Memoization de fonction rapide</h3>
+						<p>Ajoutons au prototype de base des functions en JS une méthode de memoization</p>
+												<pre><code contenteditable class="javascript">
+Function.prototype.memoize = function(){  
+    var self = this, cache = {};  
+    return function( arg ){  
+      if(arg in cache) {  
+        console.log('Cache hit for '+arg);  
+        return cache[arg];  
+      } else {  
+        console.log('Cache miss for '+arg);  
+        return cache[arg] = self( arg );  
+      }  
+    }  
+  }  
+						</code></pre>
+					</section>
+					<section>
+						<h3>Memoization de fonction rapide</h3>
+						<p>Prenons en exemple une suite de Fibonacci</p>
+												<pre><code contenteditable class="javascript">
+function fib(n){
+  return n<2?n:fib(n-1)+fib(n-2);
+}
+						</code></pre>
+						<div class="fragment">	
+							<p>En une ligne de code</p>
+							<pre><code contenteditable class="javascript">
+var memoizeFibo = fib.memoize();
+memoizeFibo(20);
+						</code></pre>
+						</div>
+					</section> 
 				</section>
 				
 			<!-- Part III -->
@@ -895,6 +936,19 @@ Found 9 errors, including 2 new errors, in 1 files (0 files OK).
 </code></pre>
 <pre class="fragment"><code contenteditable class="bash">	
 &gt; fixjsstyle --strict fixme.js
+</code></pre>
+			</section>
+			<section>
+				<h3>Créer vos évenements</h3>
+				<p>Le DOM a son propre système d'évenement, réutiliser le</p>
+					<pre class="fragment"><code contenteditable class="javascript">						
+$("p").bind("ajaxUpdate", function() { console.log("ajax update); });
+
+$("p").trigger("ajaxUpdate", someArgs);
+ .
+ .
+ .
+$("p").trigger("click");
 </code></pre>
 			</section>
 			<!--Synatxe (cf. JSLint)
