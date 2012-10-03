@@ -42,16 +42,16 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Javascript aux petits oignions</h1>
+					<h1>Javascript aux petits oignons</h1>
 					<img src="imgs/js-logo.png" height="200" width="200">
 				</section>
 				<section>
 					<h1>Avant propos</h1>
 					<h2>Pourquoi faire du JS de nos jours ? </h2>
 					<ul>
-						<li class="fragment">Des applications de plus en plus riche</li>
-						<li class="fragment">HTML5 + JS s'impose comme standard (abandon de Flash par Adobe)</li>
-						<li class="fragment">Compatible sur quasi toute les plateformes</li>
+						<li class="fragment">Des applications de plus en plus riches</li>
+						<li class="fragment">HTML5 + JS s'imposent comme standard (abandon de Flash par Adobe)</li>
+						<li class="fragment">Compatible sur quasiment toutes les plateformes</li>
 						<li class="fragment">Aucune alternative pour le moment</li>
 					</ul>
 				</section>
@@ -112,7 +112,7 @@
 								<li>Organisation du code</li>
 								<li>Best practices</li>
 								<li>Design pattern</li>
-								<li>Tests unitaire</li>
+								<li>Tests unitaires</li>
 								<li>Code coverage</li>
 							</ul>
 					</section>
@@ -123,7 +123,7 @@
 					<section>
 						<h2>Et côté client ?</h2>
 							<ul>
-								<li>Des librairies se telescopent</li>
+								<li>Des librairies se télescopent</li>
 								<li>Code non testé</li>
 								<li>Tout est chargé partout (et n'importe comment)</li>
 								<li>Code spécifique pour un navigateur</li>
@@ -144,7 +144,7 @@
 				<!-- Part 2 -->
 				<section>
 					<section>
-						<h1>II. Retrospective</h1>
+						<h1>II. Rétrospective</h1>
 						<h2>Comment en est-on arrivé là?</h2>
 					</section>
 					<section>
@@ -314,7 +314,7 @@ var myObject = {
 							<li>Chaque objet a un prototype</li>
 							<li>Les membres du prototypes sont propres à l'instance <spab class="inline-code">hasOwnProperty()</span></li>
 							<li>Le prototype est mutable</li>
-							<li>L'héritage se fait via une chaine de prototype uniquement</li>
+							<li>L'héritage se fait via une chaîne de prototype uniquement</li>
 							<li>Plus souple que les classes</li>
 							<li>Un prototype peut être vu comme un exemplaire modèle d'une famille d'objet</li>
 						</ul>
@@ -411,9 +411,9 @@ setTimeout(functRef, 500);
 						</code></pre>
 					</section>
 					<section>
-						<h3>Contre les idées reçcues</h3>
+						<h3>Contre les idées reçues</h3>
 						<ul>
-							<li>Language fonctionnel</li>
+							<li>Langage fonctionnel</li>
 							<li>Modèle objet puissant car extensible</li>
 							<li>Rapide</li>
 						</ul>
@@ -490,7 +490,7 @@ function memo(f) {
 					
 					<section>
 						<h3>Memoization de fonction rapide</h3>
-						<p>Ajoutons au prototype de base des functions en JS une méthode de memoization</p>
+						<p>Ajoutons au prototype de base des fonctions JS, une méthode de memoization</p>
 												<pre><code contenteditable class="javascript">
 Function.prototype.memoize = function(){  
     var self = this;
@@ -525,7 +525,7 @@ fib(3);
 					</section>
 					<section>
 						<div>	
-							<p>Resultat</p>
+							<p>Résultat</p>
 							<pre><code contenteditable class="javascript">
 fib(3)
 Cache miss for 3
@@ -619,7 +619,7 @@ Cache hit for 3
 					</section>
 					<section>
 						<h2>Pourquoi utiliser un framework js ?</h2>
-						<p>Le JavaScript est langage qui...</p>
+						<p>Le JavaScript est un langage qui...</p>
 						<ul>
 							<li class="fragment">n'est pas complet</li>
 							<li class="fragment">n'encourage pas aux bonnes pratiques</li>
@@ -655,7 +655,7 @@ Cache hit for 3
 						<h2>Rapidement</h2>
 						<p>Selecteur CSS</p>
 <pre><code contenteditable class="javascript">						
-$('.toto'); //selectionne tout les elements HTML ayant comme class "toto"
+$('.toto'); //sélectionne tous les éléments HTML ayant comme class "toto"
 </code></pre>
 						<p class="fragment">Utilisation</p>
 <pre class="fragment"><code contenteditable class="javascript">						
@@ -687,11 +687,11 @@ $('form').submit(function() {
 					</section>
 					<section>
 						<h3>jQuery in action</h3>
-						<p>Essayons de faire ensemble une interface de selection d'images</p>
+						<p>Essayons de faire ensemble une interface de sélection d'images</p>
 						<ul>
 							<li class="fragment">En moins de 10 lignes de codes JS</li>
 							<li class="fragment">Flexible</li>
-							<li class="fragment">Reutilisable</li>
+							<li class="fragment">Réutilisable</li>
 						</ul>
 						<div>
 						<a  class="fragment" href="demo/reuseDOM/example1.html" target="demo">Commençons</a>
@@ -700,9 +700,9 @@ $('form').submit(function() {
 					<section>
 						<h3>Conclusion de ce petit exemple</h3>
 						<ul>
-							<li>HTML peut être considéré comme un modèle de donnée</li>
+							<li>HTML peut être considéré comme un modèle de données</li>
 							<li>Seul la feuille de style CSS doit gérer la présentation</li>
-							<li>Le JS peut être considéré comme un controlleur</li>
+							<li>Le JS peut être considéré comme un contrôleur</li>
 						</ul>
 					</section>
 					<section>
@@ -904,7 +904,7 @@ h2 {
 			</section>
 <section>
 				<h3>Comment l'utiliser ?</h3>
-				<h4>En developpement</h4>
+				<h4>En développement</h4>
 <pre>
 <code contenteditable class="HTML">						
 	&lt;link rel="stylesheet/less" type="text/css" href="styles.less"&gt;
@@ -943,7 +943,7 @@ var o = { p: 1, p: 2 }; // !!! syntax error
 			<section>
 				<h3>Pas de variables globales</h3>
 				<ul>
-					<li>Limiter la visibilité des variables en les incluants dans des scopes ou dans des objets globales</li>
+					<li>Limiter la visibilité des variables en les incluants dans des scopes ou dans des objets globaux</li>
 				</ul>
 			</section>
 			<section>
@@ -962,7 +962,7 @@ var anonFunc = function anonFunc() {};
 				
 				<ul>
 					<li>Utiliser le prototypage</li>
-					<li>N'hésitez pas à faire de la programmation fonctionnel</li>
+					<li>N'hésitez pas à faire de la programmation fonctionnelle</li>
 				</ul>
 				<pre class="fragment"><code contenteditable class="javascript">						
 function forEach(array, action) {
@@ -985,7 +985,7 @@ show(sum([1, 10, 100]));
 			</section>
 			<section>
 				<h3>Un code asynchrone</h3>
-				<p>L'interface ne doit JAMAIS être bloqué par un traitement JS</p>
+				<p>L'interface ne doit JAMAIS être bloquée par un traitement JS</p>
 				<ul>
 					<li>Utiliser les méthodes de callback des framework</li>
 					<li>Utiliser les web workers</li>
@@ -1026,7 +1026,7 @@ catch (e if e instanceof NotPositiveNumberException) {
 			<section>
 				<h3>Respecter la syntaxe</h3>
 				<ul>
-					<li>La JavaScript étant très laxiste sur la syntaxe il est important d'utiliser et respecter des conventions</li>
+					<li>La JavaScript étant très laxiste sur la syntaxe, il est important d'utiliser et de respecter des conventions</li>
 					<li>Utiliser des outils comme JSLint ou Closure Linter</li>
 				</ul>
 				<pre class="fragment"><code contenteditable class="bash">	
@@ -1048,8 +1048,8 @@ Found 9 errors, including 2 new errors, in 1 files (0 files OK).
 </code></pre>
 			</section>
 			<section>
-				<h3>Créer vos évenements</h3>
-				<p>Le DOM a son propre système d'évenement, réutiliser le</p>
+				<h3>Créer vos événements</h3>
+				<p>Le DOM a son propre système d'événements, réutiliser le</p>
 					<pre class="fragment"><code contenteditable class="javascript">						
 $("p").bind("ajaxUpdate", function() { console.log("ajax update); });
 
