@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JQuery Dom Selector Plugin Sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script src="../src/jquery.domselector.js"></script>
+  </head>
+
+	<body data-spy="scroll" data-target=".bs-docs-sidebar">
+	<div class="container">
+		<div class="hero-unit">
+			<h1>Example 1</h1>
+			<p>JQuery Dom Selector Plugin Sample</p>
+			<div class="pagination">
+			  <ul>
+				<li class="active"><a href="example1.html">Example 1</a></li>
+				<li><a href="example2.html" class=>Example 2</a></li>
+				<li><a href="example3.html">Example 3</a></li>
+			  </ul>
+			</div>
+		</div>
+	</div>
+  
+    <div class="container">
+	
+		<div class="row">	
+			<div class="span6">
+				<p>
+					<img src="http://lorempixel.com/100/100/nature/1" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/2" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/3" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/4" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/5" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/6" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/7" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/8" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/9" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature"   class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/1" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/2" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/3" class="img-polaroid" alt="">
+
+					</p>
+			</div>
+			<div class="span6">
+		<h2>JS code</h2>
+				<pre>
+$('img').domSelector({
+	mode : 'toggle',
+	selectedClass : 'selected'
+});
+	</pre>
+			<h2>HTML code</h2>
+				<pre>
+&lt;img src="http://lorempixel.com/100/100" alt=""&gt;
+&lt;img src="http://lorempixel.com/100/100" alt=""&gt;
+		.
+		.
+		.
+&lt;img src="http://lorempixel.com/100/100" alt=""&gt;
+&lt;img src="http://lorempixel.com/100/100" alt=""&gt;
+				</pre>
+			<h2>CSS code</h2>
+				<pre>
+img {
+	opacity: 0.5;
+	transition: all 500ms;
+	-moz-transition: all 500ms; /* Firefox 4 */
+	-webkit-transition: all 500ms; /* Safari and Chrome */
+	-o-transition: all 500ms; /* Opera */
+}
+
+.selected {
+	border: 1px solid green;
+	opacity: 1;
+}
+			</pre>
+			</div>
+		</div>
+		<script>
+			$('img').domSelector({
+				mode : 'toggle',
+				selectedClass : 'selected'
+			});
+		</script>
+	</div>
+</body>

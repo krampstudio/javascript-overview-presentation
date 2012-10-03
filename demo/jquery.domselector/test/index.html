@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+	<title>QUnit basic example</title>
+  	<link rel="stylesheet" href="qunit/qunit.css">
+	<script src="qunit/qunit.js"></script>
+	<script>
+	(function() {
+		var jquerySrc = "../lib/jquery.js",
+			pluginSrc = "../src/jquery.domselector.js";
+		QUnit.config.urlConfig.push( "min" );
+		if ( QUnit.urlParams.min ) {
+			jquerySrc = "../lib/jquery.min.js";
+			pluginSrc = "../jquery.domselector.min.js"
+		}
+		document.write( "<script src='" + jquerySrc + "'><\/script>" );
+		document.write( "<script src='" + pluginSrc + "'><\/script>" );
+	 })();
+	</script>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture">
+	<div id="target1">
+		<a href="link1">link1</a>
+		<a href="link2">link2</a>
+		<a href="link3">link3</a>
+	</div>
+  </div>
+  <script>
+	module("presence checks");
+    test("jQuery checks", function() {
+		ok( (typeof jQuery != 'undefined'), "We expect jQuery to be available");
+		ok( (typeof $ == 'function'), "We expect the jQuery alias `$` is available"); 
+		ok( (typeof jQuery().jquery == 'string'), "We expect to be able to get the jQuery version");
+    	equal(jQuery().jquery, "1.8.0", "We expect the jQuery version is 1.8.0");
+	});
+	test("plugin checks", function(){
+		ok( (typeof $.fn.domSelector == 'function'), "We expect the plugin is available");
+	});
+	
+	module("selection checks");
+	asyncTest("simple editing", function(){
+        expect(5);
+		
+        var $target = $('#target1 > a', $('#qunit-fixture')),
+			$link = $target.first(),
+			content = 'link1';
+			
+        $target.domSelector();
+
+        $target.bind('selection.domselector', function(event, data){
+            
+			equal( $target.length, 3, "We expect to found the target using jQuery selector");
+			equal( $link.length, 1, "We expect to found the target using jQuery selector");
+			ok ($link.hasClass('selected'), "We expect the plugin to have set the default class on the selected element");
+           	ok( (typeof data == 'string'), "We expect there is a selected link");
+			equal( data, content, "We expect to found the target using jQuery selector");
+			
+            start();
+        });
+		
+		$link.trigger('click');
+    });
+  </script>
+</body>
+</html>
