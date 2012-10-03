@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JQuery Dom Selector Plugin Sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+
+	<script data-main="js/app.js" src="js/lib/require.js"></script>
+  </head>
+
+	<body data-spy="scroll" data-target=".bs-docs-sidebar">
+		<div class="container">
+		<div class="hero-unit">
+			<h1>Example 1</h1>
+			<p>Require.js sample</p>
+		</div>
+	</div>
+  
+    <div class="container">
+	
+		<div class="row">	
+			<div class="span6">
+				<p>
+					<img src="http://lorempixel.com/100/100/nature/1" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/2" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/3" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/4" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/5" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/6" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/7" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/8" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/9" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature"   class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/1" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/2" class="img-polaroid" alt="">
+					<img src="http://lorempixel.com/100/100/nature/3" class="img-polaroid" alt="">
+
+					</p>
+			</div>
+			<div class="span6">
+			<h2>HTML code</h2>
+			<pre class="prettyprint linenums">
+&lt;script data-main="js/app.js" src="js/lib/require.js"&gt;&lt;/script&gt;
+			</pre>
+			<h2>app.js</h2>
+			<pre class="prettyprint linenums">
+requirejs.config({
+	baseUrl: 'js/lib',
+	paths: {
+		selection: '../user/selection'
+	},
+	shim: {
+	    'jquery-ui': ['jquery'],
+	    'jquery-domselector': ['jquery']
+	}
+});
+requirejs(['jquery'],  function($){
+	$(function() {
+		if($('img').length > 0){
+			requirejs([ 'selection', 'jquery-domselector'], function(selection) {
+				selection.init();
+			});
+		}
+	});
+});
+			</pre>
+			<h2>user/selection.js</h2>
+			<pre class="prettyprint linenums">
+define( ['selection'], function(){
+	return {
+		init: function(){
+			$('img').domSelector();
+		}
+	}
+});
+		</pre>
+		</div>
+	</div>
+	<script src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
+	<script>
+		prettyPrint()
+	</script>
+	</div>
+</body>

@@ -1,0 +1,20 @@
+requirejs.config({
+	baseUrl: 'js/lib',
+	paths: {
+		selection: '../user/selection'
+	},
+	shim: {
+	    'jquery-ui': ['jquery'],
+	    'jquery-domselector': ['jquery']
+	}
+});
+requirejs(['jquery', 'selection'],  function($){
+
+	$(function() {
+		if($('img').length > 0){
+			requirejs([ '../user/selection', 'jquery-domselector'], function(selection) {
+				selection.init();
+			});
+		}
+	});
+});
