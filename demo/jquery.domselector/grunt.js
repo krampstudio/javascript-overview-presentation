@@ -2,12 +2,10 @@ module.exports = function(grunt){
 	grunt.initConfig({
 		pkg: '<json:package.json>',
         meta: {
-            banner: '/**\n'+
-                    ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
+            banner: '/**\n * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
 					' * <%= pkg.name %> - v<%= pkg.version %> \n' +
 					' * @author <%=pkg.author.name%> <<%=pkg.author.email%>>\n' +
-					' * @license <%= _.pluck(pkg.licenses, "url").join(", ")\n'+
-                    ' */'
+					' * @license <%= _.pluck(pkg.licenses, "url").join(", ")\n */'
         },
 		min : {
 			dist : {
@@ -21,12 +19,8 @@ module.exports = function(grunt){
 				dest: 'jquery.domselector.min.js'
 			}
 		},
-		qunit : {
-			all : ['test/*.html']
-		},
-		lint : {
-			files : ['src/*.js']
-		},
+		qunit : { all : ['test/*.html'] },
+		lint : { files : ['src/*.js'] },
 		jshint : {
 			options: {
 				browser : true,

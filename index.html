@@ -59,10 +59,16 @@
 					<h1>Lexique</h1>
 					<table>
 						<tr>
-							<td>DOM</td><td>presents an HTML document as a tree-structure.</td>
+							<td>DOM</td><td>Document Object Model presents an HTML document as a tree-structure.</td>
 						</tr>
 						<tr>
-							<td>CSS</td><td>Cascading Stylesheet</td>
+							<td>CSS</td><td>Cascading StyleSheet</td>
+						</td>
+						<tr>
+							<td>AJAX</td><td>Asynchrnous Javascript And [Xml]</td>
+						</td>
+						<tr>
+							<td>JSON</td><td>JavaScript Object Notation</td>
 						</td>
 					</table>
 				</section>
@@ -277,12 +283,12 @@
 					<section>
 						<h3>Modèle objet</h3>
 						<ul>
-							<li>Tout est objet sauf <i>null</i> et undefined</li>
+							<li>Tout est objet sauf <span class="inline-code">null</span> et <span class="inline-code">undefined</span></li>
 							<li>Les nombres sont aussi des objets mais attention:
-									<pre><code contenteditable class="javascript">>
+									<pre><code contenteditable class="javascript">
 2.toString();	//raises SyntaxError
 									</code></pre>
-									<pre class="fragment"><code contenteditable class="javascript">>
+									<pre class="fragment"><code contenteditable class="javascript">
  2..toString();
 (2).toString();
  2 .toString();
@@ -293,10 +299,10 @@
 					<section>
 						<h3>JavaScript Object Notation</h3>
 						<img src="imgs/json.png" />
-	                                        <pre><code contenteditable class="javascript">>
+	                                        <pre><code contenteditable class="javascript">
 var a = {};	// == var a = new Object(); 
 						</code></pre>
-						<pre><code contenteditable class="javascript">>
+						<pre><code contenteditable class="javascript">
 var myObject = {
 	foo : true,		// != myObject.prototype.foo
 	bar : 'baz',
@@ -812,6 +818,15 @@ define(function (require) {
 				<p><a href="demo/require.js/index.html" target="_blank">Exemple</a></p>
 			</section>
 			<section>
+				<h3>Le Menu : entrée, plat, dessert</h3>
+				<img src="imgs/backbone.png" />
+				<blockquote>
+				Backbone supplies structure to JavaScript-heavy applications by providing models key-value binding and custom events, 
+				collections with a rich API of enumerable functions, views with declarative event handling, 
+				and connects it all to your existing application over a RESTful JSON interface.
+				</blockquote>
+			</section>
+			<section>
 				<h3>Simplifions le CSS avec LESS</h3>
 				<img src="http://cdn.churchm.ag/wp-content/uploads/2011/08/less-logo-180x180.png"/>
 				<p>LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.</p>
@@ -925,7 +940,7 @@ h2 {
 		<section>
 			<section>
 				<h1>VIII. Tester son code</h1>
-				<quote>Toujours gouter son plat avant de servir!</quote>
+				<blockquote>Toujours gouter son plat avant de servir!</blockquote>
 			</section>
 			<section>
 				<h2>Tests unitaires</h2>
@@ -935,8 +950,219 @@ h2 {
 				<img src="imgs/tests/jasmine.png" />
 				<img src="imgs/tests/qunitjs.png" />
 			</section>
+			<section>
+				<h2>QUnit</h2>
+				<ul>
+					<li>Assertions clientes</li>
+					<li>Organisation en modules</li>
+					<li>Tests synchrones / asynchrones</li>
+					<li>Manipulation du DOM via les <i>fixtures</i></li>
+				</ul>
+				<pre><code contenteditable class="javascript">
+test("Simple test", function(){
+	ok( 1 === 1, "We expect javascript to work");
+	equal(1, 1);
+});
+				</code></pre>
+				<p><a href="demo/jquery.domselector/test/index.html" target="_blank">Testons notre plugin jQuery</a></p>
+				</section>
+				<section>
+					<h4>Code HTML</h4>
+					<pre><code contenteditable>
+&lt;body&gt;
+  &lt;div id="qunit"&gt;&lt;/div&gt;
+  &lt;div id="qunit-fixture"&gt;
+	&lt;div id="target1"&gt;
+		&lt;a href="link1"&gt;link1&lt;/a&gt;
+		&lt;a href="link2"&gt;link2&lt;/a&gt;
+		&lt;a href="link3"&gt;link3&lt;/a&gt;
+	&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+					</code></pre>
+				</section>
+				<section>
+					<h4>Test Javascript</h4>
+					<pre><code contenteditable>
+module("presence checks");
+test("jQuery checks", function() {
+	ok( (typeof $ == 'function')); 
+	equal(jQuery().jquery, "1.8.0");
+});
+test("plugin checks", function(){
+	ok( (typeof $.fn.domSelector == 'function'));
+});
+
+module("selection checks");
+asyncTest("simple editing", function(){
+	expect(3);
+	var $target = $('#target1 > a', $('#qunit-fixture')),
+		$link = $target.first(),
+		content = 'link1';
+	$target.domSelector();
+	$target.bind('selection.domselector', function(event, data){
+		ok ($link.hasClass('selected'));
+		ok( (typeof data == 'string'));
+		equal( data, content);
+		start();
+	});
+	$link.trigger('click');
+});
+					</code></pre>
+				</section>
+				<section>
+					<h2>Automatiser les tests c'est mieux</h2>
+					<div class="fragment">
+						<img src="imgs/tests/phantomjs.png" />
+						<blockquote>PhantomJS is a headless WebKit with JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG.</blockquote>
+						<ul>
+							<li>S'intègre aux frameworks de tests</li>
+							<li>Screen Capture</li>
+							<li>Selenium WebDriver :  Ghost Driver</li>
+							<li>Network Monitoring</li>
+						</ul>
+					</div>
+				</section>
+			</section>
 		</section>
 		<!-- Part VII -->
+		<section>
+			<section>
+				<h1>VIII. Ingénieurie logicielle</h1>
+				<blockquote>Ouvrir son resto!</blockquote>
+			</section>
+			<section>
+				<h2>Exemple de build avec Grunt</h2>
+				<img src="imgs/grunt.png" />
+				<blockquote>Grunt is a task-based command line build tool for JavaScript projects</blockquote>
+			</section>
+			<section>
+				<h3>Buildons notre plugin</h3>
+				<p>Besoins?</p>
+				<ul class="fragment">
+					<li>Création du header</li>
+					<li>Minimification des fichiers</li>
+					<li>Lancer les tests unitaires</li>
+					<li>Vérifier le code source</li>
+				</ul>
+			</section>
+			<section>
+				<h4>package.json</h4>
+				<pre><code contenteditable class="javascript">
+{
+    "name" 			: "domselector",
+    "description"   : "A jQuery plugin that enables you use dom elements for selection",
+    "version"       : "0.1.0",
+    "author": {
+        "name"  : "Bertrand Chevrier",
+        "email" : "chevrier.bertrand@gmail.com",
+        "url"   : "https://github.com/krampstudio"
+    },
+    "licenses": [{
+        "type": "GPL",
+        "url" : "http://www.gnu.org/licenses/gpl-3.0.txt"
+      }
+    ],
+    "repository": {
+        "type" : "git",
+        "url"  : "git://github.com/krampstudio/..."
+    },
+    "dependencies": {
+        "jquery"   : ">=1.7"
+    },
+    "devDependencies": {
+        "grunt" : "0.3.x",
+        "qunit" : "1.9.x"
+    }
+}
+				</code></pre>
+			</section>
+			<section>
+				<h4>grunt.js</h4>
+				<pre><code contenteditable class="javascript">
+module.exports = function(grunt){
+	grunt.initConfig({
+		pkg: '&lt;json:package.json&gt;',
+		meta: {  
+			banner: '/* Copyright (c) <%= pkg.author.name %>*/' 
+		},
+		min : {
+			src: 'src/jquery.domselector.js',
+			dest: 'jquery.domselector.min.js'
+		},
+		concat : {
+			src : [ '&lt;banner&gt;', 'jquery.domselector.min.js'],
+			dest: 'jquery.domselector.min.js'
+		},
+		qunit : { all : ['test/*.html'] },
+		lint : { files : ['src/*.js'] },
+		jshint : {
+			options: {
+				browser : true,
+				smarttabs : true
+			},
+			globals: {jQuery : true}
+		}
+	});
+    grunt.registerTask('default', 'min concat');
+};
+				</code></pre>
+			</section>
+			<section>
+				<h2>Qualité du code source</h2>
+				<h2>JSLint <img src="imgs/versus.png" alt="vs" style="border:none;background:none;" /> JSHint</h2>
+			</section>
+			<section>
+				<h4>Exemple: JSHint smarttabs</h4>
+				<img src="imgs/smarttabs.png" class="fragment" />
+				<div class="fragment">
+<pre><code contenteditable class="javascript">
+/*jshint evil:true, boss:true */
+</code></pre>
+<pre><code contenteditable class="javascript">
+jshint : {
+	options: {
+		browser : true,
+		smarttabs : true
+	},
+	globals: {
+		jQuery : true
+	}
+}
+</code></pre>
+				</div>
+			</section>
+			<section>
+				<h2>Et le documentation?</h2>
+				<div class="fragment">
+					<p>JsDoc-toolkit</p>
+					<pre><code contenteditable class="javascript">
+/**
+ * Enables you to select data using the DOM
+ * @class DomSelector
+ */
+var DomSelector = {
+
+	/**
+	 * Initialize the selection
+	 * 
+	 * @memberOf DomSelector
+	 * @param {Object} options
+	 * @param {String} [options.mode="once"] the selection mode in: once, normal, exclusive
+	 * @param {String} [options.selectedClass="selected"] css class applied on selected element
+	 */
+	_init : function(options){ 
+		/* ... */
+	}
+};
+					</code></pre>
+				</div>
+			</section>
+			<section>
+				<img src="imgs/doc.png" />
+			</section>
+		</section>
+		<!-- Part VIII -->
 		<section>
 			<section>
 				<h1>VIII. Bonnes pratiques</h1>
@@ -1082,8 +1308,31 @@ $("p").trigger("click");
 opérateur de vérité
 Utiliser les événements
 -->
+			
+			
 		
-		
+		</section>
+		<!-- Part IX -->
+		<section>
+			<section>
+				<h1>IX. Javascript Everywhere !</h1>
+			</section>
+			<section>
+				<h2>Côté serveur</h2>
+				<img src="imgs/node.png" /> 
+				<img src="imgs/npm.png" />
+			</section>
+			<section>
+				<h2>Côté client</h2>
+				<p>pdf.js, popcorn.js, reveal.js, jasmine.js, underscore.js, require.js, angular.js, jquery, google closure library, extjs,
+				sencha, jquery mobile, jake, ejs, haml, async.js, async.j, mootools, impress.js, signals, jquery-ui, rapahael., backbone.js, wakanda, modernizr,
+				dojo, yui, processing.js, qunit.js, activerecord.js, date.js, gamejs, sigma, brackets, pine, flac.js, aac.js, aes.js, webkit.js,
+				script.aculo.us, $fx(), md5.js, blackbird, typeface.js, swfoject.js, jschart, reflection.js, ie7.js, highlight.js, ...</p>
+			</section>
+		</section>
+		<section>
+			<p>Présentation réalisée en HTML avec <span class="inline-code">reveal.js</span>, versionnée avec <span class="inline-code">git</span>.<p>
+			<p>Les exemples utilisent <span class="inline-code">twitter bootstrap</span>.</p>
 		</section>
 			
 		</div>	
